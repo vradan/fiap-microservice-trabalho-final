@@ -1,7 +1,5 @@
 package br.com.fiap.trabalhofinal.controllers;
 
-import java.time.LocalDateTime;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +29,9 @@ public class TransactionController {
 	@ApiResponses({ @ApiResponse(code = 201, message = "return code 201 if success"),
 			@ApiResponse(code = 204, message = "return code 204 if transaction ocurred more than 60 seconds") })
 	public ResponseEntity<Void> saveTransaction(@RequestBody TransactionVO transaction) {
-		LocalDateTime minimalTime = LocalDateTime.now().minusSeconds(60);
+		long minimalTime = System.currentTimeMillis() - 60000;
 
-		if (transaction.getTimestamp().isBefore(minimalTime)) {
+		if (minimalTime > transaction.getTimestamp()) {
 			throw new TransactionOldDatetimeException(transaction.getTimestamp(), minimalTime);
 		}
 

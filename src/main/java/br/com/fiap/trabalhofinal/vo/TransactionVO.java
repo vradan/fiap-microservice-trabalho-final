@@ -1,7 +1,5 @@
 package br.com.fiap.trabalhofinal.vo;
 
-import java.time.LocalDateTime;
-
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,10 +13,10 @@ import lombok.Setter;
 public class TransactionVO {
 
 	@ApiModelProperty("time when the transaction occurred")
-	private LocalDateTime timestamp;
+	private Long timestamp;
 
 	@ApiModelProperty("value of the transaction")
-	private double amount;
+	private Double amount;
 
 	@Override
 	public String toString() {
