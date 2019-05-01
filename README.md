@@ -1,4 +1,4 @@
-# Payment Service
+# Statistics Service REST API
   Este serviço REST foi construído com spring-boot e tem como objetivo servir com uma API de estatística. Os métodos implementados são POST para salvar uma transação e GET para retornar uma estatística das transações dos últimos 60 segundos.
   
 Obs.: Para rodar o projeto, executar na raiz do projeto o comando `mvn sprint-boot:run`
