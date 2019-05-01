@@ -16,6 +16,12 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
 		return new ResponseEntity<>(ex.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
+	@ExceptionHandler(InvalidTransactionException.class)
+	public final ResponseEntity<String> handleInvalidsTransactionExceptions(InvalidTransactionException ex,
+			WebRequest request) {
+		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+	}
+
 	@ExceptionHandler(TransactionOldDatetimeException.class)
 	public final ResponseEntity<String> handleTransactionOldDatetimeExceptions(TransactionOldDatetimeException ex,
 			WebRequest request) {
