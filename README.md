@@ -1,7 +1,5 @@
 # Statistics Service REST API
   Este serviço REST foi construído com spring-boot e tem como objetivo servir com uma API de estatística. Os métodos implementados são POST para salvar uma transação e GET para retornar uma estatística das transações dos últimos 60 segundos.
-  
-Obs.: Para rodar o projeto, executar na raiz do projeto o comando `mvn sprint-boot:run`
 
 POST
 ------
@@ -37,3 +35,23 @@ A API faz o cálculo com as transações que ocorrorem em até 60s anteriores a 
   "count": 100
 }
 ```
+## Executando a aplicação
+------
+Existem 2 formas simples para subir a aplicação, executando o jar pelo java `java -jar target/trabalho-final-0.0.1-SNAPSHOT.jar` ou executando o projeto pelo mvn `mvn spring-boot:run`. Ambas as formas devem ser executadas na raiz do projeto e sobem a aplicação na porta 8080 do localhost.
+
+
+## Docker
+------
+O serviço está preparado para rodar com Docker, para ter 2 containers rodando simultaneamente basta seguir os passos:
+
+### a.
+Realizar o build da imagem com o comando:
+`mvn install dockerfile:build`
+
+### b.
+Subir 1° instância apontando para a porta 8081 com o comando:
+`docker run --name statistics-1 -d -p 8081:8080 springio/trabalho-final:latest`
+
+### c.
+Subir 2° instância apontando para uma porta diferente, como a 8082:
+`docker run --name statistics-2 -d -p 8082:8080 springio/trabalho-final:latest`
